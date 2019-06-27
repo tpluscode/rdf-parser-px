@@ -1,0 +1,10 @@
+CHARSET="ANSI";
+LANGUAGE="de";
+LANGUAGES="de","fr";
+VALUES("Jahr")="2004","2005";
+VALUES[fr]("Annee")="2004","2005";
+VALUES("Kanton")="Schweiz","Bern / Berne";
+VALUES[fr]("Canton")="Suisse","Bern / Berne";
+DATA=
+1 2
+3 4;
