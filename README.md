@@ -22,3 +22,10 @@ The constructor of the parser supports the following options:
 
 - `baseIRI`: IRI used for the property, values, dataset and observations.
   This options is required!
+- `columns`: Metadata for columns given as array of objects.
+  Each object must contain a `titles` property to identify the column.
+  The value must match the subkey in the default language.
+  The value `@data` must be used for the measure values.
+  Changing the datatype is possible with the `datatype` property.
+  The property must be the string value of the full IRI of the datatype.
+  If the `datatype` property is used for dimensions, literals are used. 
