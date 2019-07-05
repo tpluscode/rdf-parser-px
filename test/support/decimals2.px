@@ -1,0 +1,8 @@
+CHARSET="ANSI";
+LANGUAGE="de";
+LANGUAGES="de","fr";
+DECIMALS=2;
+VALUES("Kanton")="Schweiz","Bern / Berne";
+VALUES[fr]("Canton")="Suisse","Bern / Berne";
+DATA=
+1 200;
