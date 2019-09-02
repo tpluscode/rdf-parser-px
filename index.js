@@ -3,18 +3,21 @@ const PxParser = require('./lib/PxParser')
 const RdfBuilder = require('./lib/RdfBuilder')
 
 class RdfPxParser {
-  constructor ({ baseIRI, ...options }) {
-    this.baseIRI = baseIRI
+  constructor ({ ...options }) {
     this.options = options
   }
 
   import (stream) {
-    const builder = new RdfBuilder({ baseIRI: this.baseIRI, ...this.options })
+    const builder = new RdfBuilder({ ...this.options })
 
     stream.pipe(concatStream(content => {
-      const parser = new PxParser()
+      try {
+        const parser = new PxParser({ ...this.options })
 
-      builder.import(parser.import(content))
+        builder.import(parser.import(content))
+      } catch (err) {
+        builder.emit('error', err)
+      }
     }))
 
     return builder

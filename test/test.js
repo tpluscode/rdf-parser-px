@@ -55,4 +55,41 @@ describe('rdf-parser-px', () => {
 
     expect(ntriples).toBe(expected)
   })
+
+  test('converts the codepage example using the given codepage', async () => {
+    const expected = fs.readFileSync('test/support/codepage.px.nt').toString().trim()
+    const pxStream = fs.createReadStream('test/support/codepage-not-defined.px')
+
+    const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/', encoding: 'iso-8859-15' })
+    const quadStream = parser.import(pxStream)
+
+    const quads = await streamConcat(quadStream)
+    const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
+
+    expect(ntriples).toBe(expected)
+  })
+
+  test('converts the codepage example and reads the codepage from the pairs', async () => {
+    const expected = fs.readFileSync('test/support/codepage.px.nt').toString().trim()
+    const pxStream = fs.createReadStream('test/support/codepage.px')
+
+    const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/' })
+    const quadStream = parser.import(pxStream)
+
+    const quads = await streamConcat(quadStream)
+    const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
+
+    expect(ntriples).toBe(expected)
+  })
+
+  test('throws an error when trying to convert the codepage example with a given encoding different to the one in the px files', async () => {
+    const pxStream = fs.createReadStream('test/support/codepage.px')
+
+    const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/', encoding: 'utf-8' })
+
+    await expect(Promise.resolve().then(async () => {
+      const quadStream = parser.import(pxStream)
+      await streamConcat(quadStream)
+    })).rejects.toThrow()
+  })
 })
