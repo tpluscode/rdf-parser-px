@@ -1,0 +1,10 @@
+CHARSET="ANSI";
+LANGUAGE="de";
+LANGUAGES="de","fr";
+VALUES("Jahr")="2004","2005";
+VALUES[fr]("Année")="2004","2005";
+VALUES("Kanton")="Schweiz","Zürich";
+VALUES[fr]("Canton")="Suisse","Zürich";
+DATA=
+1 2
+3 4;
