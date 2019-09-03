@@ -1,9 +1,11 @@
+<http://example.org/simple/property/0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/linked-data/cube#DimensionProperty> .
 <http://example.org/simple/property/0> <http://www.w3.org/2000/01/rdf-schema#label> "Kanton"@de .
 <http://example.org/simple/property/0> <http://www.w3.org/2000/01/rdf-schema#label> "Canton"@fr .
 <http://example.org/simple/property/0/0> <http://www.w3.org/2000/01/rdf-schema#label> "Schweiz"@de .
 <http://example.org/simple/property/0/1> <http://www.w3.org/2000/01/rdf-schema#label> "Bern / Berne"@de .
 <http://example.org/simple/property/0/0> <http://www.w3.org/2000/01/rdf-schema#label> "Suisse"@fr .
 <http://example.org/simple/property/0/1> <http://www.w3.org/2000/01/rdf-schema#label> "Bern / Berne"@fr .
+<http://example.org/simple/property/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/linked-data/cube#DimensionProperty> .
 <http://example.org/simple/property/1> <http://www.w3.org/2000/01/rdf-schema#label> "Jahr"@de .
 <http://example.org/simple/property/1> <http://www.w3.org/2000/01/rdf-schema#label> "Annee"@fr .
 <http://example.org/simple/property/1/0> <http://www.w3.org/2000/01/rdf-schema#label> "2004"@de .
