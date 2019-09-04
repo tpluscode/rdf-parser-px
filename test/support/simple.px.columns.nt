@@ -8,6 +8,7 @@
 <http://example.org/simple/property/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/linked-data/cube#DimensionProperty> .
 <http://example.org/simple/property/1> <http://www.w3.org/2000/01/rdf-schema#label> "Jahr"@de .
 <http://example.org/simple/property/1> <http://www.w3.org/2000/01/rdf-schema#label> "Annee"@fr .
+<http://example.org/simple/property/value> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/linked-data/cube#MeasureProperty> .
 <http://example.org/simple/dataset> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/linked-data/cube#DataSet> .
 <http://example.org/simple/data/0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/linked-data/cube#Observation> .
 <http://example.org/simple/data/0> <http://example.org/simple/property/0> <http://example.org/simple/property/0/0> .
