@@ -29,3 +29,4 @@ The constructor of the parser supports the following options:
   Changing the datatype is possible with the `datatype` property.
   The property must be the string value of the full IRI of the datatype.
   If the `datatype` property is used for dimensions, literals are used. 
+- `encoding`: Encoding used for the PX file. The library tries to guess proper encoding of the PX file but not all of them provide information about the encoding used, this can override it accordingly. Needs to be a supported encoding by [iconv-lite](https://github.com/ashtuchkin/iconv-lite).
