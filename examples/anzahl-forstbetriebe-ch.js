@@ -9,7 +9,7 @@ async function main () {
     titles: 'Jahr',
     datatype: 'http://www.w3.org/2001/XMLSchema#gYear'
   }]
-  const parser = new RdfPxParser({ baseIRI: 'http://example.org/anzahl-forstbetriebe/', columns })
+  const parser = new RdfPxParser({ baseIRI: 'http://example.org/anzahl-forstbetriebe/', columns, encoding: 'iso-8859-15' })
   const quadStream = parser.import(pxStream)
 
   quadStream.on('data', quad => {
