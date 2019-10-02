@@ -1,10 +1,16 @@
 CHARSET="ANSI";
 LANGUAGE="de";
 LANGUAGES="de","fr";
+STUB="Jahr","Kanton";
+STUB[fr]="Année","Canton";
+HEADING="Variable";
+HEADING[fr]="Variable";
 VALUES("Jahr")="2004","2005";
 VALUES[fr]("Année")="2004","2005";
 VALUES("Kanton")="Schweiz","Zürich";
 VALUES[fr]("Canton")="Suisse","Zürich";
+VALUES("Variable")="Wert";
+VALUES[fr]("Variable")="Valeur";
 DATA=
 1 2
 3 4;

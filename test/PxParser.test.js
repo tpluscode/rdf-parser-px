@@ -30,8 +30,8 @@ describe('PxParser', () => {
       const parser = new PxParser()
       const cube = parser.import(simplePxContent)
 
-      expect(cube.pairs.length).toBe(8)
-      expect(cube.pairs[4]).toEqual({
+      expect(cube.pairs.length).toBe(29)
+      expect(cube.pairs[23]).toEqual({
         keyword: 'VALUES',
         language: 'fr',
         subkey: 'Annee',
