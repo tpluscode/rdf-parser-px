@@ -1,10 +1,31 @@
 CHARSET="ANSI";
+AXIS-VERSION="2010";
 LANGUAGE="de";
 LANGUAGES="de","fr";
+DECIMALS=0;
+SHOWDECIMALS=0;
+MATRIX="dummy";
+SUBJECT-CODE="dummy";
+SUBJECT-AREA="dummy";
+SUBJECT-AREA[fr]="dummy";
+DESCRIPTION="dummy";
+DESCRIPTION[fr]="dummy";
+TITLE="dummy";
+TITLE[fr]="dummy";
+CONTENTS="dummy";
+CONTENTS[fr]="dummy";
+UNITS="dummy";
+UNITS[fr]="dummy";
+STUB="Jahr","Kanton";
+STUB[fr]="Annee","Canton";
+HEADING="Variable";
+HEADING[fr]="Variable";
 VALUES("Jahr")="2004","2005";
 VALUES[fr]("Annee")="2004","2005";
 VALUES("Kanton")="Schweiz","Bern / Berne";
 VALUES[fr]("Canton")="Suisse","Bern / Berne";
+VALUES("Variable")="Wert";
+VALUES[fr]("Variable")="Valeur";
 DATA=
 1 2
 3 4;

@@ -23,6 +23,19 @@ describe('rdf-parser-px', () => {
     expect(ntriples).toBe(expected)
   })
 
+  test('converts the heading example to RDF and spreads the values', async () => {
+    const expected = fs.readFileSync('test/support/heading.px.nt').toString().trim()
+    const pxStream = fs.createReadStream('test/support/heading.px')
+
+    const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/' })
+    const quadStream = parser.import(pxStream)
+
+    const quads = await streamConcat(quadStream)
+    const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
+
+    expect(ntriples).toBe(expected)
+  })
+
   test('converts the simple example to RDF using the given column definition', async () => {
     const expected = fs.readFileSync('test/support/simple.px.columns.nt').toString().trim()
     const pxStream = fs.createReadStream('test/support/simple.px')
@@ -31,7 +44,7 @@ describe('rdf-parser-px', () => {
       titles: 'Jahr',
       datatype: ns.xsd.gYear.value
     }, {
-      titles: '@data',
+      titles: 'Wert',
       datatype: ns.xsd.double.value
     }]
     const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/', columns })

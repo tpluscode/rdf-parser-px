@@ -1,0 +1,28 @@
+CHARSET="ANSI";
+AXIS-VERSION="2010";
+LANGUAGE="de";
+LANGUAGES="de";
+DECIMALS=0;
+SHOWDECIMALS=0;
+MATRIX="dummy";
+SUBJECT-CODE="dummy";
+SUBJECT-AREA="dummy";
+DESCRIPTION="dummy";
+TITLE="dummy";
+CONTENTS="dummy";
+UNITS="dummy","dummy";
+STUB="Jahr","Kanton","Typ";
+HEADING="Variable";
+VALUES("Jahr")="2004","2005";
+VALUES("Kanton")="Schweiz","Bern / Berne";
+VALUES("Variable")="Anzahl","Prozent";
+VALUES("Typ")="klein","groß";
+DATA=
+1 2
+3 4
+5 6
+7 8
+9 10
+11 12
+13 14
+15 16;
