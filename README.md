@@ -30,3 +30,22 @@ The constructor of the parser supports the following options:
   The property must be the string value of the full IRI of the datatype.
   If the `datatype` property is used for dimensions, literals are used. 
 - `encoding`: Encoding used for the PX file. The library tries to guess proper encoding of the PX file but not all of them provide information about the encoding used, this can override it accordingly. Needs to be a supported encoding by [iconv-lite](https://github.com/ashtuchkin/iconv-lite).
+
+## CLI Tool 
+
+The `px-to-nt` command line util converts PX files in the file system and writes them to a N-Triples file.
+See `px-to-nt --help` for more details.
+
+### Example
+
+Download [this](https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_103) PX file with `wget`:
+
+```
+wget https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_103 -O px-x-0703010000_103.px
+```
+ 
+Now it can be converted:
+
+```
+px-to-nt --input=./px-x-0703010000_103.px --output=px-x-0703010000_103.nt --base=http://example.org/ --metadata=./examples/anzahl-forstbetriebe-ch.json --encoding=iso-8859-15
+```
