@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const namespace = require('@rdfjs/namespace')
-const streamConcat = require('./support/streamConcat')
+const getStream = require('get-stream')
 const RdfPxParser = require('..')
 
 const ns = {
@@ -10,6 +10,10 @@ const ns = {
 }
 
 describe('rdf-parser-px', () => {
+  test('is a constructor', () => {
+    expect(typeof RdfPxParser).toBe('function')
+  })
+
   test('converts the simple example to RDF', async () => {
     const expected = fs.readFileSync('test/support/simple.px.nt').toString().trim()
     const pxStream = fs.createReadStream('test/support/simple.px')
@@ -17,7 +21,7 @@ describe('rdf-parser-px', () => {
     const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/' })
     const quadStream = parser.import(pxStream)
 
-    const quads = await streamConcat(quadStream)
+    const quads = await getStream.array(quadStream)
     const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
 
     expect(ntriples).toBe(expected)
@@ -30,7 +34,7 @@ describe('rdf-parser-px', () => {
     const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/' })
     const quadStream = parser.import(pxStream)
 
-    const quads = await streamConcat(quadStream)
+    const quads = await getStream.array(quadStream)
     const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
 
     expect(ntriples).toBe(expected)
@@ -50,7 +54,7 @@ describe('rdf-parser-px', () => {
     const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/', columns })
     const quadStream = parser.import(pxStream)
 
-    const quads = await streamConcat(quadStream)
+    const quads = await getStream.array(quadStream)
     const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
 
     expect(ntriples).toBe(expected)
@@ -63,7 +67,7 @@ describe('rdf-parser-px', () => {
     const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/' })
     const quadStream = parser.import(pxStream)
 
-    const quads = await streamConcat(quadStream)
+    const quads = await getStream.array(quadStream)
     const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
 
     expect(ntriples).toBe(expected)
@@ -76,7 +80,7 @@ describe('rdf-parser-px', () => {
     const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/', encoding: 'iso-8859-15' })
     const quadStream = parser.import(pxStream)
 
-    const quads = await streamConcat(quadStream)
+    const quads = await getStream.array(quadStream)
     const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
 
     expect(ntriples).toBe(expected)
@@ -89,7 +93,7 @@ describe('rdf-parser-px', () => {
     const parser = new RdfPxParser({ baseIRI: 'http://example.org/simple/' })
     const quadStream = parser.import(pxStream)
 
-    const quads = await streamConcat(quadStream)
+    const quads = await getStream.array(quadStream)
     const ntriples = quads.map(quad => quad.toString()).join('\n').trim()
 
     expect(ntriples).toBe(expected)
@@ -102,7 +106,7 @@ describe('rdf-parser-px', () => {
 
     await expect(Promise.resolve().then(async () => {
       const quadStream = parser.import(pxStream)
-      await streamConcat(quadStream)
+      await getStream.array(quadStream)
     })).rejects.toThrow()
   })
 })
