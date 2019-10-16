@@ -16,7 +16,7 @@ program
 program.parse(process.argv)
 
 async function main ({ base, encoding, input, output, metadata }) {
-  const columns = metadata ? JSON.parse((await promisify(fs.readFile)(metadata)).toString()) : null
+  const columns = metadata ? JSON.parse((await promisify(fs.readFile)(metadata)).toString()) : []
   const inputStream = fs.createReadStream(input)
   const outputStream = fs.createWriteStream(output)
 
