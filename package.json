@@ -1,6 +1,6 @@
 {
   "name": "rdf-parser-px",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "PX RDF/JS Parser",
   "main": "index.js",
   "bin": {
