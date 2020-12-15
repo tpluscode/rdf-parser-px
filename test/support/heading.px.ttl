@@ -1,0 +1,152 @@
+@prefix cube: <http://ns.bergnet.org/cube/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix scale: <http://ns.bergnet.org/cube/scale/>.
+@prefix schema: <http://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://example.org/simple> a cube:Cube;
+  cube:observationConstraint <http://example.org/simple/shape>;
+  cube:observationSet <http://example.org/simple/observation/>;
+  schema:name "dummy"@de;
+  schema:description "dummy"@de;
+  schema:unitText "dummy"@de;
+  schema:identifier "dummy".
+
+<http://example.org/simple/shape> a sh:NodeShape, cube:Constraint;
+  sh:closed true;
+  sh:property [
+    sh:path rdf:type;
+    sh:nodeKind sh:IRI;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:in (<http://ns.bergnet.org/cube/Observation>)
+  ], [
+    sh:path <http://ns.bergnet.org/cube/observedBy>;
+    sh:nodeKind sh:IRI;
+    sh:minCount 1;
+    sh:maxCount 1
+  ], [
+    schema:name "Jahr"@de;
+    sh:path <http://example.org/simple/dimension/0>;
+    sh:nodeKind sh:IRI;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:in (<http://example.org/simple/dimension/0/0> <http://example.org/simple/dimension/0/1>);
+    scale:scaleOfMeasure scale:Categorical
+  ], [
+    schema:name "Kanton"@de;
+    sh:path <http://example.org/simple/dimension/1>;
+    sh:nodeKind sh:IRI;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:in (<http://example.org/simple/dimension/1/0> <http://example.org/simple/dimension/1/1>);
+    scale:scaleOfMeasure scale:Categorical
+  ], [
+    schema:name "Typ"@de;
+    sh:path <http://example.org/simple/dimension/2>;
+    sh:nodeKind <http://www.w3.org/ns/shacl#IRI>;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:in (<http://example.org/simple/dimension/2/0> <http://example.org/simple/dimension/2/1>);
+    scale:scaleOfMeasure scale:Categorical
+  ], [
+    schema:name "Anzahl"@de;
+    sh:path <http://example.org/simple/measure/0>;
+    sh:nodeKind <http://www.w3.org/ns/shacl#Literal>;
+    sh:minCount 1;
+    sh:maxCount 1;
+    scale:scaleOfMeasure scale:Numerical
+  ], [
+    schema:name "Prozent"@de;
+    sh:path <http://example.org/simple/measure/1>;
+    sh:nodeKind <http://www.w3.org/ns/shacl#Literal>;
+    sh:minCount 1;
+    sh:maxCount 1;
+    scale:scaleOfMeasure scale:Numerical
+  ].
+
+<http://example.org/simple/dimension/0/0>
+  schema:name "2004"@de.
+
+<http://example.org/simple/dimension/0/1>
+  schema:name "2005"@de.
+
+<http://example.org/simple/dimension/1/0>
+  schema:name "Schweiz"@de.
+
+<http://example.org/simple/dimension/1/1>
+  schema:name "Bern / Berne"@de.
+
+<http://example.org/simple/dimension/2/0>
+  <http://schema.org/name> "klein"@de.
+
+<http://example.org/simple/dimension/2/1>
+  <http://schema.org/name> "gro��"@de.
+
+<http://example.org/simple/observation/> a cube:ObservationSet;
+  cube:observation
+    <http://example.org/simple/observation/0>,
+    <http://example.org/simple/observation/1>,
+    <http://example.org/simple/observation/2>,
+    <http://example.org/simple/observation/3>,
+    <http://example.org/simple/observation/4>,
+    <http://example.org/simple/observation/5>,
+    <http://example.org/simple/observation/6>,
+    <http://example.org/simple/observation/7>.
+
+<http://example.org/simple/observation/0> a cube:Observation;
+  <http://example.org/simple/dimension/0> <http://example.org/simple/dimension/0/0>;
+  <http://example.org/simple/dimension/1> <http://example.org/simple/dimension/1/0>;
+  <http://example.org/simple/dimension/2> <http://example.org/simple/dimension/2/0>;
+  <http://example.org/simple/measure/0> "1"^^xsd:decimal;
+  <http://example.org/simple/measure/1> "2"^^xsd:decimal.
+
+<http://example.org/simple/observation/1> a cube:Observation;
+  <http://example.org/simple/dimension/0> <http://example.org/simple/dimension/0/0>;
+  <http://example.org/simple/dimension/1> <http://example.org/simple/dimension/1/0>;
+  <http://example.org/simple/dimension/2> <http://example.org/simple/dimension/2/1>;
+  <http://example.org/simple/measure/0> "3"^^xsd:decimal;
+  <http://example.org/simple/measure/1> "4"^^xsd:decimal.
+
+<http://example.org/simple/observation/2> a cube:Observation;
+  <http://example.org/simple/dimension/0> <http://example.org/simple/dimension/0/0>;
+  <http://example.org/simple/dimension/1> <http://example.org/simple/dimension/1/1>;
+  <http://example.org/simple/dimension/2> <http://example.org/simple/dimension/2/0>;
+  <http://example.org/simple/measure/0> "5"^^xsd:decimal;
+  <http://example.org/simple/measure/1> "6"^^xsd:decimal.
+
+<http://example.org/simple/observation/3> a cube:Observation;
+  <http://example.org/simple/dimension/0> <http://example.org/simple/dimension/0/0>;
+  <http://example.org/simple/dimension/1> <http://example.org/simple/dimension/1/1>;
+  <http://example.org/simple/dimension/2> <http://example.org/simple/dimension/2/1>;
+  <http://example.org/simple/measure/0> "7"^^xsd:decimal;
+  <http://example.org/simple/measure/1> "8"^^xsd:decimal.
+
+<http://example.org/simple/observation/4> a cube:Observation;
+  <http://example.org/simple/dimension/0> <http://example.org/simple/dimension/0/1>;
+  <http://example.org/simple/dimension/1> <http://example.org/simple/dimension/1/0>;
+  <http://example.org/simple/dimension/2> <http://example.org/simple/dimension/2/0>;
+  <http://example.org/simple/measure/0> "9"^^xsd:decimal;
+  <http://example.org/simple/measure/1> "10"^^xsd:decimal.
+
+<http://example.org/simple/observation/5> a cube:Observation;
+  <http://example.org/simple/dimension/0> <http://example.org/simple/dimension/0/1>;
+  <http://example.org/simple/dimension/1> <http://example.org/simple/dimension/1/0>;
+  <http://example.org/simple/dimension/2> <http://example.org/simple/dimension/2/1>;
+  <http://example.org/simple/measure/0> "11"^^xsd:decimal;
+  <http://example.org/simple/measure/1> "12"^^xsd:decimal.
+
+<http://example.org/simple/observation/6> a cube:Observation;
+  <http://example.org/simple/dimension/0> <http://example.org/simple/dimension/0/1>;
+  <http://example.org/simple/dimension/1> <http://example.org/simple/dimension/1/1>;
+  <http://example.org/simple/dimension/2> <http://example.org/simple/dimension/2/0>;
+  <http://example.org/simple/measure/0> "13"^^xsd:decimal;
+  <http://example.org/simple/measure/1> "14"^^xsd:decimal.
+
+<http://example.org/simple/observation/7> a cube:Observation;
+  <http://example.org/simple/dimension/0> <http://example.org/simple/dimension/0/1>;
+  <http://example.org/simple/dimension/1> <http://example.org/simple/dimension/1/1>;
+  <http://example.org/simple/dimension/2> <http://example.org/simple/dimension/2/1>;
+  <http://example.org/simple/measure/0> "15"^^xsd:decimal;
+  <http://example.org/simple/measure/1> "16"^^xsd:decimal.
